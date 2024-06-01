@@ -1,20 +1,23 @@
 import { Product } from "@shared/product.model";
-import { productsArray } from "./products-data";
 import { Injectable } from "@angular/core";
 import { Observable, Subject } from "rxjs";
+import { HttpClient } from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductsService {
-  private products: Subject<Product[]> = new Subject();
+  // private products: Subject<Product[]> = new Subject();
+
+  constructor(private httpClient: HttpClient) { }
 
   getProducts(): Observable<Product[]> {
-    return this.products;
-  }
-
-  refreshProducts(): void {
-    console.log('refreshProducts');
-    this.products.next(productsArray);
+    // fetch('/api/products')
+    //   .then(resp => resp.json()
+    //     .then(productsArray => {
+    //       this.products.next(productsArray);
+    //     })
+    //   );
+    return this.httpClient.get<Product[]>('/api/products');
   }
 }
