@@ -15,11 +15,11 @@ export class CartComponent implements OnInit {
   }
 
   get cartItems() {
-    return this.cartService.cart;
+    return this.cartService.cart();
   }
 
   get cartTotal() {
-    return this.cartService.cartTotal;
+    return this.cartService.cartTotal();
   }
 
   removeFromCart(product: Product) {
