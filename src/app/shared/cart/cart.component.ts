@@ -12,6 +12,7 @@ export class CartComponent implements OnInit {
   constructor(private cartService: CartService) { }
 
   ngOnInit() {
+    // this.cartService.cart()[0].name = "foo"; // don't mutate directly even if you can
   }
 
   get cartItems() {
